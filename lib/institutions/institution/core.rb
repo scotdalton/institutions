@@ -1,11 +1,11 @@
-module Institutions
-  module Core
+module Institutions#:no_doc
+  module Core#:no_doc
     # Required attributes
     attr_reader :code, :name
     alias :display_name :name
 
     # Optional core attributes
-    attr_reader :default, :ip_addresses, :parent_institution
+    attr_reader :default
     alias :default? :default
 
     #
@@ -18,9 +18,9 @@ module Institutions
     #
     #   require 'institutions'
     #   hash = { "attribute1" => "My first attribute.", :array_attribute => [1, 2] }
-    #   institution = Institution.new("my_inst", "My Institution", hash)
+    #   institution = Institutions::Institution.new("my_inst", "My Institution", hash)
     #
-    #   p institution        # -> <Institution @code=:my_inst @name="My Institution" @attribute1=My first attribute." @array_attribute=[1, 2] @default=false>
+    #   p institution        # -> <Institutions::Institution @code=:my_inst @name="My Institution" @attribute1=My first attribute." @array_attribute=[1, 2] @default=false>
     #
     def initialize(code, name, h={})
       # Set the required attributes
@@ -54,16 +54,29 @@ module Institutions
     end
 
     # 
-    # Merges the given arguments into the Institution.
-    # Assumes the argument has a to_hash method
+    # Dynamically sets attr_readers for elements
     # 
-    def merge(arg={})
-      # Set each hash value as an instance variable, but don't overwrite code or name values.
-      to_hash.merge(arg.to_hash).each do |key, value| 
-        instance_variable_set("@#{key}".to_sym, value) unless [:code, :name].include? key.to_sym
+    def method_missing(method, *args, &block)
+      instance_variable = instance_variablize(method)
+      if instance_variable_defined? instance_variable
+        self.class.send :attr_reader, method.to_sym
+        instance_variable_get instance_variable
+      else
+        super
       end
     end
-    private :merge
+
+    # 
+    # Tells users that we respond to missing methods
+    # if they are instance variables.
+    # 
+    def respond_to_missing?(method, include_private = false)
+      if instance_variable_defined? instance_variablize(method)
+        true
+      else
+        super
+      end
+    end
 
     # 
     # Sets the required attributes.

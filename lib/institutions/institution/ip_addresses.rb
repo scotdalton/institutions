@@ -1,5 +1,5 @@
-module Institutions
-  module IpAddresses
+module Institutions#:no_doc
+  module IpAddresses#:no_doc
     require 'ipaddr'
     attr_reader :ip_addresses
 

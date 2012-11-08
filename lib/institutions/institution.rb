@@ -12,15 +12,18 @@ module Institutions#:no_doc
   #
   #   require 'institutions'
   #   hash = { "attribute1" => "My first attribute.", :array_attribute => [1, 2] }
-  #   institution = Institution.new("my_inst", "My Institution", hash)
+  #   institution = Institutions::Institution.new("my_inst", "My Institution", hash)
   #
-  #   p institution        # -> <Institution code=:my_inst name="My Institution" attribute1=My first attribute." array_attribute=[1, 2]>
+  #   p institution   # -> #<Institutions::Institution @code=:my_inst, @name="My Institution", @attribute1="My first attribute.", @array_attribute=[1, 2], @default=false>
   # 
   class Institution
     include Core
-    include IpAddresses
     include Auth
+    include IpAddresses
+    include Merge
     include Mvc
+    include Parents
     include Services
+    include Util
   end
 end

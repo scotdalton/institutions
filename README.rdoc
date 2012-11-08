@@ -1,0 +1,6 @@
+= Institutions
+
+This gem provides a mechanism to create Institutions from a hash of data elements.
+
+== Basics
+

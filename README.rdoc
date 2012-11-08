@@ -1,4 +1,5 @@
 = Institutions
+{<img src="https://secure.travis-ci.org/scotdalton/institutions.png?branch=master" alt="Build Status" />}[https://travis-ci.org/scotdalton/institutions]
 
 This gem provides a mechanism to create Institutions from a hash of data elements.
 

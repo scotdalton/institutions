@@ -1,0 +1,83 @@
+module Institutions
+  module Core
+    # Required attributes
+    attr_reader :code, :name
+    alias :display_name :name
+
+    # Optional core attributes
+    attr_reader :default, :ip_addresses, :parent_institution
+    alias :default? :default
+
+    #
+    # Creates a new Institution object from the given code, name and hash.
+    #
+    # The optional +hash+, if given, will generate additional attributes and values.
+    # 
+    # 
+    # For example:
+    #
+    #   require 'institutions'
+    #   hash = { "attribute1" => "My first attribute.", :array_attribute => [1, 2] }
+    #   institution = Institution.new("my_inst", "My Institution", hash)
+    #
+    #   p institution        # -> <Institution @code=:my_inst @name="My Institution" @attribute1=My first attribute." @array_attribute=[1, 2] @default=false>
+    #
+    def initialize(code, name, h={})
+      # Set the required attributes
+      set_required_attributes code, name
+      # Merge in the optional hash attribute
+      merge h
+      # If the institution is named default, take that as an
+      # indication that it's the default institution
+      @default = true if (name.eql? "default" or name.eql? "DEFAULT") 
+      # If default was never set, explicitly set default as false.
+      @default = false if default.nil?
+    end
+
+    #
+    # Converts the Institution to a hash with keys representing
+    # each Institutional attribute (as symbols) and their corresponding values.
+    # Example:
+    #
+    #   require 'institutions'
+    #   institution = Institution.new("my_inst", "My Institution")
+    #   data.to_hash   # => {:code => "my_inst", :name => "My Institution", :default => false }
+    #
+    def to_hash
+      hash = {}
+      instance_variables.each do |instance_variable|
+        # Remove beginning '@' and convert to symbol for hash keys.
+        hash_key = instance_variable.to_s.sub(/^@/,'').to_sym
+        hash[hash_key] = instance_variable_get(instance_variable)
+      end
+      hash
+    end
+
+    # 
+    # Merges the given arguments into the Institution.
+    # Assumes the argument has a to_hash method
+    # 
+    def merge(arg={})
+      # Set each hash value as an instance variable, but don't overwrite code or name values.
+      to_hash.merge(arg.to_hash).each do |key, value| 
+        instance_variable_set("@#{key}".to_sym, value) unless [:code, :name].include? key.to_sym
+      end
+    end
+    private :merge
+
+    # 
+    # Sets the required attributes.
+    # Raises an ArgumentError specifying the missing arguments if they are nil.
+    # 
+    def set_required_attributes(code, name)
+      missing_arguments = []
+      missing_arguments << :code if code.nil?
+      missing_arguments << :name if name.nil?
+      raise ArgumentError.new("Cannot create the Institution based on the given arguments (#{args.inspect}).\n"+
+        "The following arguments cannot be nil: #{missing_arguments.inspect}") unless missing_arguments.empty?
+      # Set the instance variables
+      @code, @name = code.to_sym, name
+    end
+    private :set_required_attributes
+  end
+end

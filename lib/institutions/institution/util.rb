@@ -29,7 +29,7 @@ module Institutions#:no_doc
     end
     
     def valid_instance_variable?(id)
-      id.match(/[\@\=\?]/).nil?
+      id.to_sym.id2name.match(/[\@\=\?]/).nil?
     end
 
     # Convert s to an instance variable

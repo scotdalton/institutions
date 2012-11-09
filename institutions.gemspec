@@ -17,5 +17,6 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
 
   s.add_dependency "require_all"
+  s.add_dependency "git"
   s.add_development_dependency "rake"
 end

@@ -26,31 +26,12 @@ module Institutions#:no_doc
       # Set the required attributes
       set_required_attributes code, name
       # Merge in the optional hash attribute
-      merge h
+      merge h unless h.nil?
       # If the institution is named default, take that as an
       # indication that it's the default institution
       @default = true if (name.eql? "default" or name.eql? "DEFAULT") 
       # If default was never set, explicitly set default as false.
       @default = false if default.nil?
-    end
-
-    #
-    # Converts the Institution to a hash with keys representing
-    # each Institutional attribute (as symbols) and their corresponding values.
-    # Example:
-    #
-    #   require 'institutions'
-    #   institution = Institution.new("my_inst", "My Institution")
-    #   data.to_hash   # => {:code => "my_inst", :name => "My Institution", :default => false }
-    #
-    def to_hash
-      hash = {}
-      instance_variables.each do |instance_variable|
-        # Remove beginning '@' and convert to symbol for hash keys.
-        hash_key = instance_variable.to_s.sub(/^@/,'').to_sym
-        hash[hash_key] = instance_variable_get(instance_variable)
-      end
-      hash
     end
 
     # 
@@ -61,7 +42,7 @@ module Institutions#:no_doc
       missing_arguments = []
       missing_arguments << :code if code.nil?
       missing_arguments << :name if name.nil?
-      raise ArgumentError.new("Cannot create the Institution based on the given arguments (#{args.inspect}).\n"+
+      raise ArgumentError.new("Cannot create the Institution based on the given arguments (:code => #{code.inspect}, :name => #{name.inspect}).\n"+
         "The following arguments cannot be nil: #{missing_arguments.inspect}") unless missing_arguments.empty?
       # Set the instance variables
       @code, @name = code.to_sym, name

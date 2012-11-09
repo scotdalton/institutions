@@ -1,0 +1,89 @@
+# Configure what service plugins are used by Umlaut. This skeleton file
+# has been generated into your app to help you get started. 
+#
+# If a service has "disabled:true", it's currently turned off. 
+#
+# Some services require local api key or connection details as config.
+# Most services take other options for custom configuration too, not
+# all options are neccesarily listed as examples here, see source
+# or source-generated docs for more info.   
+default:
+  name: NYU Libraries
+  auth:
+    link_code: NYU
+  views:
+    dir: nyu
+    sfx_base_url: http://sfx.library.nyu.edu/sfxlcl41?
+NYU:
+  parent_institution: default
+  ip_addresses:
+    - 128.122.0.0-128.122.149.239
+    - 172.26.*.*
+    - 172.27.*.*
+    - 172.22.88.*
+    - 216.165.*.*
+    - 128.238.*.*
+NYUAD:
+  name: NYU Abu Dhabi Library
+  parent_institution: NYU 
+  views:
+    dir: nyuad
+    sfx_base_url: http://sfx.library.nyu.edu/sfxlcl41?
+  ip_addresses:
+    - 192.168.224.0/23
+    - 192.168.226.0/24
+    - 192.168.227.0/25
+    - 192.168.227.128/26
+    - 172.25.79.0/26
+    - 172.26.240.0/22
+    - 172.30.60.0/24
+    - 172.27.240.0/22
+    - 172.29.252.0/24
+    - 172.29.120.0/23
+    - 192.168.192.0/23
+    - 192.168.195.0/25
+    - 172.25.76.0/23
+    - 172.26.232.0/22
+    - 172.30.58.0/24
+    - 172.27.232.0/22
+    - 172.29.250.0/24
+    - 172.29.116.0/23
+    - 192.168.194.0/24
+    - 172.25.78.0/26
+    - 172.26.236.0/22
+    - 172.30.59.0/24
+    - 172.27.236.0/22
+    - 172.29.251.0/24
+    - 172.29.118.0/23
+CU:
+  name: The Cooper Union Library
+  login:
+    link_code: CU
+  views:
+    dir: cu
+    sfx_base_url: http://sfx.library.nyu.edu/sfxcooper?
+  controllers:
+    searcher: SearchMethods::Sfx4Solr::CU
+  ip_addresses:
+    - 199.98.16.0-199.98.31.255 
+NS:
+  name: New School Libraries
+  login:
+    link_code: NS
+  views:
+    dir: ns
+    sfx_base_url: http://sfx4.library.newschool.edu/ns?
+  controllers:
+    searcher: SearchMethods::Sfx4Solr::NS
+  ip_addresses:
+    - 149.31.0.0-149.31.255.255
+    - 69.64.210.46
+    - 69.64.210.50
+    - 69.64.210.42
+    - 69.193.198.126
+NYSID:
+  login:
+    link_code: NYSID
+  name: New York School of Interior Design Library
+  ip_addresses:
+    - 128.122.0.1

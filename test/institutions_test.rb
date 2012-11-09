@@ -15,6 +15,12 @@ class InstitutionsTest < Test::Unit::TestCase
   
   def test_path
     assert_equal Institutions::DEFAULT_LOADPATHS, Institutions.loadpaths
-    Institutions.loadpaths<<"/some/path"
+    Institutions.loadpaths << File.join("../config")
+    assert_equal Institutions::DEFAULT_LOADPATHS.concat(["../config"]), Institutions.loadpaths
+  end
+  
+  def test_institutions
+    Institutions.loadpaths << File.join("test", "config")
+    institutions = Institutions.institutions
   end
 end

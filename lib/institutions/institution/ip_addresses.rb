@@ -9,7 +9,12 @@ module Institutions#:no_doc
       end
       @ip_addresses = IPAddrRangeSet.new(*args)
     end
-    private :ip_addresses
+    protected :ip_addresses=
+    
+    def ip_addresses_add(arg1, arg2)
+      arg1.add(arg2)
+    end
+    protected :ip_addresses_add
     
     def convert_to_range(s)
       s.split("-")[0]...s.split("-")[1]

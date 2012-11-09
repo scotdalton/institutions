@@ -3,14 +3,13 @@
 module Institutions
   require 'require_all'
   require_rel 'institutions'
-  
+
   # Default paths/files for the module.
-  default_loadpaths = ["./config"]
-  default_loadpaths << "#{Rails.root}/config" if (defined?(Rails) and Rails.root)
+  default_loadpaths = [(defined?(Rails) and Rails.root) ? "#{Rails.root}/config" : "./config"]
   DEFAULT_LOADPATHS = default_loadpaths
   default_filenames = ["institutions.yml"]
   DEFAULT_FILENAMES = default_filenames
-  
+
   def self.loadpaths
     @loadpaths ||= DEFAULT_LOADPATHS
   end
@@ -18,55 +17,75 @@ module Institutions
   def self.filenames
     @filenames ||= DEFAULT_FILENAMES
   end
-  
-  def self.reload
-    @institutions = nil
-    self.institutions
-  end
 
-  # Returns an array of Institutions
-  def defaults
-    return institutions.values.find_all {|institution| institution.default === true}
-  end
-
-  # Returns an array of Institutions
-  def institutions_with_ip(ip)
-    return institutions.values.find_all { |institution| institution.includes_ip?(ip) }
-  end
-  
-  
-  def self.institutions
-    unless @institutions
-      raise ArgumentError.new("No load path was specified.") if loadpaths.nil?
-      loadfiles = []
+  # Intended for internal use only.
+  def self.loadfiles
+    loadfiles ||= []
+    if loadfiles.empty?
       loadpaths.each do |loadpath|
         filenames.each do |filename|
-          puts filename
           loadfile = File.join(loadpath, filename)
-          puts loadfile
           loadfiles<< loadfile if File.exists?(loadfile)
         end
       end
+    end
+    loadfiles
+  end
+
+  def self.reload
+    @institutions = nil
+    institutions
+  end
+
+  # Returns an Array of Institutions
+  def self.defaults
+    return institutions.values.find_all { |institution| institution.default? }
+  end
+
+  # Returns an Array of Institutions that contain the given IP.
+  def self.institutions_with_ip(ip)
+    return institutions.values.find_all { |institution| institution.includes_ip?(ip) }
+  end
+
+  #
+  # Returns a Hash of Institution instances with the Institution#code as the Hash key.
+  # Load file order can be change by the calling application by using Array methods.
+  # The default load file in Rails apps is
+  #   "#{Rails.root}/config/institutions.yml"
+  # and if not Rails
+  #   "./config/institutions.yml"
+  # To manipulate load path order and/or add directories to the path
+  #   Institutions.loadpaths << File.join("path", "to", "new", "load", "directory")
+  # To manipulate file name order and/or add file names
+  #   Institutions.filenames << "newfile.yml"
+  # 
+  def self.institutions
+    unless @institutions
+      raise NameError.new("No load path was specified.") if loadpaths.nil?
       raise NameError.new("No files named #{filenames} exist to load in the configured load paths, #{loadpaths}. ") if loadfiles.empty?
       @institutions = {}
       loadfiles.each do |loadfile|
-        yaml_h = YAML.load_file(loadfile)
         # Loop through institutions in the yaml
-        yaml_h.each do |code, elements|
-          if(institutions.has_key(code.to_sym))
-            # Merge the new elements
-            institutions.merge(elements)
-          else
-            institutions[code.to_sym] << Institution.new(code, elements["name"], elements)
-          end
+        YAML.load_file(loadfile).each_pair do |code, elements|
+          code = code.to_sym
+          # Merge the new elements or add a new Institution
+          @institutions.has_key?(code) ?
+            @institutions[code].merge(elements) :
+              @institutions[code] = 
+                Institution.new(code, elements["name"] ? elements["name"] : code, elements)
         end
       end
       # Handle inheritance for institutions
-      @institutions.each do |key, institution|
-        parent_code = institution.parent_code
-        institution.merge_parent(@institutions[parent_code]) if parent_code
-      end
+      merge_parents
     end
-    return @institutions
+    @institutions
+  end
+
+  # Handle inheritance for institutions
+  def self.merge_parents
+    @institutions.each do |key, institution|
+      parent_code = institution.parent_code
+      institution.merge_parent(@institutions[parent_code]) if parent_code
+    end
   end
 end

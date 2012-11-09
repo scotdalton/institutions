@@ -43,7 +43,7 @@ module Institutions
   end
 
   # Returns an Array of Institutions that contain the given IP.
-  def self.institutions_with_ip(ip)
+  def self.with_ip(ip)
     return institutions.values.find_all { |institution| institution.includes_ip?(ip) }
   end
 
@@ -79,6 +79,14 @@ module Institutions
       merge_parents
     end
     @institutions
+  end
+
+  def self.empty?
+    institutions.empty?
+  end
+
+  def self.institutions?
+    (not empty?)
   end
 
   # Handle inheritance for institutions

@@ -62,7 +62,7 @@ module Institutions
   def self.institutions
     unless @institutions
       raise NameError.new("No load path was specified.") if loadpaths.nil?
-      raise NameError.new("No files named #{filenames} exist to load in the configured load paths, #{loadpaths}. ") if loadfiles.empty?
+      raise NameError.new("No files named #{filenames} exist to load in the configured load paths, #{loadpaths}. ") if filenames.empty?
       @institutions = {}
       loadfiles.each do |loadfile|
         # Loop through institutions in the yaml

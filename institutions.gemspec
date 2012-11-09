@@ -18,5 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "require_all"
   s.add_dependency "git"
-  s.add_development_dependency "rake"
+  s.add_dependency "rdoc"
+  s.add_dependency "rake"
 end

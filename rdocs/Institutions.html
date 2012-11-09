@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module Institutions - Institutions</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/institutions/institution/auth.rb
+    <li>lib/institutions/institution/core.rb
+    <li>lib/institutions/institution/ip_addresses.rb
+    <li>lib/institutions/institution/merge.rb
+    <li>lib/institutions/institution/mvc.rb
+    <li>lib/institutions/institution/parents.rb
+    <li>lib/institutions/institution/services.rb
+    <li>lib/institutions/institution/util.rb
+    <li>lib/institutions/institution.rb
+    <li>lib/institutions/version.rb
+    <li>lib/institutions.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-defaults">::defaults</a>
+    
+    <li><a href="#method-c-filenames">::filenames</a>
+    
+    <li><a href="#method-c-institutions">::institutions</a>
+    
+    <li><a href="#method-c-institutions_with_ip">::institutions_with_ip</a>
+    
+    <li><a href="#method-c-loadfiles">::loadfiles</a>
+    
+    <li><a href="#method-c-loadpaths">::loadpaths</a>
+    
+    <li><a href="#method-c-merge_parents">::merge_parents</a>
+    
+    <li><a href="#method-c-reload">::reload</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Institutions.html">Institutions</a>
+  
+    <li><a href="./Institutions/Auth.html">Institutions::Auth</a>
+  
+    <li><a href="./Institutions/Core.html">Institutions::Core</a>
+  
+    <li><a href="./Institutions/Institution.html">Institutions::Institution</a>
+  
+    <li><a href="./Institutions/IpAddresses.html">Institutions::IpAddresses</a>
+  
+    <li><a href="./Institutions/Merge.html">Institutions::Merge</a>
+  
+    <li><a href="./Institutions/Mvc.html">Institutions::Mvc</a>
+  
+    <li><a href="./Institutions/Parents.html">Institutions::Parents</a>
+  
+    <li><a href="./Institutions/Services.html">Institutions::Services</a>
+  
+    <li><a href="./Institutions/Util.html">Institutions::Util</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Institutions</h1>
+
+  <div id="description" class="description">
+    
+<p>Order of paths, then order of files dictates overrides.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="DEFAULT_FILENAMES">DEFAULT_FILENAMES
+        
+        <dd class="description">
+        
+      
+        <dt id="DEFAULT_LOADPATHS">DEFAULT_LOADPATHS
+        
+        <dd class="description"><p>Default paths/files for the module.</p>
+        
+      
+        <dt id="VERSION">VERSION
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-defaults" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">defaults</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns an Array of <a href="Institutions.html">Institutions</a></p>
+          
+
+          
+          <div class="method-source-code" id="defaults-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">defaults</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">institutions</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">institution</span><span class="ruby-operator">|</span> <span class="ruby-identifier">institution</span>.<span class="ruby-identifier">default?</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- defaults-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- defaults-method -->
+
+    
+      <div id="method-c-filenames" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">filenames</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="filenames-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">filenames</span>
+  <span class="ruby-ivar">@filenames</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">DEFAULT_FILENAMES</span>.<span class="ruby-identifier">dup</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- filenames-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- filenames-method -->
+
+    
+      <div id="method-c-institutions" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">institutions</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a Hash of <a href="Institutions/Institution.html">Institution</a>
+instances with the <a
+href="Institutions/Core.html#attribute-i-code">Institutions::Core#code</a>
+as the Hash key. Load file order can be change by the calling application
+by using Array methods. The default load file in Rails apps is</p>
+
+<pre>&quot;#{Rails.root}/config/institutions.yml&quot;</pre>
+
+<p>and if not Rails</p>
+
+<pre>&quot;./config/institutions.yml&quot;</pre>
+
+<p>To manipulate load path order and/or add directories to the path</p>
+
+<pre>Institutions.loadpaths &lt;&lt; File.join(&quot;path&quot;, &quot;to&quot;, &quot;new&quot;, &quot;load&quot;, &quot;directory&quot;)</pre>
+
+<p>To manipulate file name order and/or add file names</p>
+
+<pre>Institutions.filenames &lt;&lt; &quot;newfile.yml&quot;</pre>
+          
+
+          
+          <div class="method-source-code" id="institutions-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">institutions</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@institutions</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">NameError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;No load path was specified.&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">loadpaths</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">NameError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;No files named #{filenames} exist to load in the configured load paths, #{loadpaths}. &quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">loadfiles</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@institutions</span> = {}
+    <span class="ruby-identifier">loadfiles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">loadfile</span><span class="ruby-operator">|</span>
+      <span class="ruby-comment"># Loop through institutions in the yaml</span>
+      <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">loadfile</span>).<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">code</span>, <span class="ruby-identifier">elements</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">code</span> = <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-comment"># Merge the new elements or add a new Institution</span>
+        <span class="ruby-ivar">@institutions</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">code</span>) <span class="ruby-operator">?</span>
+          <span class="ruby-ivar">@institutions</span>[<span class="ruby-identifier">code</span>].<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">elements</span>) <span class="ruby-operator">:</span>
+            <span class="ruby-ivar">@institutions</span>[<span class="ruby-identifier">code</span>] = 
+              <span class="ruby-constant">Institution</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">code</span>, <span class="ruby-identifier">elements</span>[<span class="ruby-string">&quot;name&quot;</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">elements</span>[<span class="ruby-string">&quot;name&quot;</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">code</span>, <span class="ruby-identifier">elements</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># Handle inheritance for institutions</span>
+    <span class="ruby-identifier">merge_parents</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@institutions</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- institutions-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- institutions-method -->
+
+    
+      <div id="method-c-institutions_with_ip" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">institutions_with_ip</span><span
+            class="method-args">(ip)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns an Array of <a href="Institutions.html">Institutions</a> that
+contain the given IP.</p>
+          
+
+          
+          <div class="method-source-code" id="institutions_with_ip-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">institutions_with_ip</span>(<span class="ruby-identifier">ip</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">institutions</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">institution</span><span class="ruby-operator">|</span> <span class="ruby-identifier">institution</span>.<span class="ruby-identifier">includes_ip?</span>(<span class="ruby-identifier">ip</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- institutions_with_ip-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- institutions_with_ip-method -->
+
+    
+      <div id="method-c-loadfiles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">loadfiles</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Intended for internal use only.</p>
+          
+
+          
+          <div class="method-source-code" id="loadfiles-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">loadfiles</span>
+  <span class="ruby-identifier">loadfiles</span> = []
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">loadfiles</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">loadpaths</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">loadpath</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">filenames</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">filename</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">loadfile</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">loadpath</span>, <span class="ruby-identifier">filename</span>)
+        <span class="ruby-identifier">loadfiles</span><span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">loadfile</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">loadfile</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">loadfiles</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- loadfiles-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- loadfiles-method -->
+
+    
+      <div id="method-c-loadpaths" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">loadpaths</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="loadpaths-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">loadpaths</span>
+  <span class="ruby-ivar">@loadpaths</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">DEFAULT_LOADPATHS</span>.<span class="ruby-identifier">dup</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- loadpaths-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- loadpaths-method -->
+
+    
+      <div id="method-c-merge_parents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">merge_parents</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Handle inheritance for institutions</p>
+          
+
+          
+          <div class="method-source-code" id="merge_parents-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">merge_parents</span>
+  <span class="ruby-ivar">@institutions</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">institution</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">parent_code</span> = <span class="ruby-identifier">institution</span>.<span class="ruby-identifier">parent_code</span>
+    <span class="ruby-identifier">institution</span>.<span class="ruby-identifier">merge_parent</span>(<span class="ruby-ivar">@institutions</span>[<span class="ruby-identifier">parent_code</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent_code</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- merge_parents-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- merge_parents-method -->
+
+    
+      <div id="method-c-reload" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reload</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reload-source">
+            <pre><span class="ruby-comment"># File lib/institutions.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reload</span>
+  <span class="ruby-ivar">@institutions</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">institutions</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reload-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reload-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

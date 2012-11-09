@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module Institutions::IpAddresses - Institutions</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/institutions/institution/ip_addresses.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-includes_ip-3F">#includes_ip?</a>
+    
+    <li><a href="#method-i-ip_addresses-3D">#ip_addresses=</a>
+    
+    <li><a href="#method-i-ip_addresses_add">#ip_addresses_add</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Institutions.html">Institutions</a>
+  
+    <li><a href="../Institutions/Auth.html">Institutions::Auth</a>
+  
+    <li><a href="../Institutions/Core.html">Institutions::Core</a>
+  
+    <li><a href="../Institutions/Institution.html">Institutions::Institution</a>
+  
+    <li><a href="../Institutions/IpAddresses.html">Institutions::IpAddresses</a>
+  
+    <li><a href="../Institutions/Merge.html">Institutions::Merge</a>
+  
+    <li><a href="../Institutions/Mvc.html">Institutions::Mvc</a>
+  
+    <li><a href="../Institutions/Parents.html">Institutions::Parents</a>
+  
+    <li><a href="../Institutions/Services.html">Institutions::Services</a>
+  
+    <li><a href="../Institutions/Util.html">Institutions::Util</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Institutions::IpAddresses</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-ip_addresses" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ip_addresses</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-includes_ip-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">includes_ip?</span><span
+            class="method-args">(candidate)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a <code>boolean</code> indicating whether the candidate IP  address
+is in the Institution’s IP range. Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'institutions'</span>
+<span class="ruby-identifier">institution</span> = <span class="ruby-constant">Institution</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;my_inst&quot;</span>, <span class="ruby-string">&quot;My Institution&quot;</span>, <span class="ruby-string">&quot;ip_addresses&quot;</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;127.0.0.1&quot;</span>, <span class="ruby-value">127.0</span><span class="ruby-value">.0</span><span class="ruby-value">.2</span><span class="ruby-string">&quot;])
+data.includes_ip?(&quot;</span><span class="ruby-value">127.0</span><span class="ruby-value">.0</span><span class="ruby-value">.1</span><span class="ruby-node">&quot;)   # =&gt; true
+data.includes_ip?(&quot;</span><span class="ruby-value">127.0</span><span class="ruby-value">.0</span><span class="ruby-value">.3</span><span class="ruby-node">&quot;)   # =&gt; false
+</span></pre>
+          
+
+          
+          <div class="method-source-code" id="includes_ip-3F-source">
+            <pre><span class="ruby-comment"># File lib/institutions/institution/ip_addresses.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">includes_ip?</span>(<span class="ruby-identifier">candidate</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ip_addresses</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">ip_addresses</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">candidate</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- includes_ip-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- includes_ip-3F-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Protected Instance Methods</h3>
+
+    
+      <div id="method-i-ip_addresses-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ip_addresses=</span><span
+            class="method-args">(args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ip_addresses-3D-source">
+            <pre><span class="ruby-comment"># File lib/institutions/institution/ip_addresses.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ip_addresses=</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">collect!</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp">%r-/</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">convert_to_range</span>(<span class="ruby-identifier">arg</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">arg</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@ip_addresses</span> = <span class="ruby-constant">IPAddrRangeSet</span>.<span class="ruby-identifier">new</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ip_addresses-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ip_addresses-3D-method -->
+
+    
+      <div id="method-i-ip_addresses_add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ip_addresses_add</span><span
+            class="method-args">(arg1, arg2)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ip_addresses_add-source">
+            <pre><span class="ruby-comment"># File lib/institutions/institution/ip_addresses.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ip_addresses_add</span>(<span class="ruby-identifier">arg1</span>, <span class="ruby-identifier">arg2</span>)
+  <span class="ruby-identifier">arg1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">arg2</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ip_addresses_add-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ip_addresses_add-method -->
+
+    
+    </section><!-- protected-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

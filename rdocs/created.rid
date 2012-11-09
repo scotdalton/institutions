@@ -1,0 +1,13 @@
+Fri, 09 Nov 2012 12:40:53 -0500
+README.rdoc	Fri, 09 Nov 2012 12:26:33 -0500
+lib/institutions/institution/auth.rb	Thu, 08 Nov 2012 14:12:45 -0500
+lib/institutions/institution/core.rb	Fri, 09 Nov 2012 11:53:49 -0500
+lib/institutions/institution/ip_addresses.rb	Fri, 09 Nov 2012 10:37:43 -0500
+lib/institutions/institution/merge.rb	Fri, 09 Nov 2012 10:41:29 -0500
+lib/institutions/institution/mvc.rb	Thu, 08 Nov 2012 14:12:56 -0500
+lib/institutions/institution/parents.rb	Thu, 08 Nov 2012 16:42:52 -0500
+lib/institutions/institution/services.rb	Thu, 08 Nov 2012 14:13:00 -0500
+lib/institutions/institution/util.rb	Fri, 09 Nov 2012 11:45:29 -0500
+lib/institutions/institution.rb	Thu, 08 Nov 2012 16:06:37 -0500
+lib/institutions/version.rb	Thu, 08 Nov 2012 12:47:34 -0500
+lib/institutions.rb	Fri, 09 Nov 2012 12:18:47 -0500

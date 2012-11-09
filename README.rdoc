@@ -1,12 +1,23 @@
 = Institutions
 {<img src="https://secure.travis-ci.org/scotdalton/institutions.png?branch=master" alt="Build Status" />}[https://travis-ci.org/scotdalton/institutions]
 {<img src="https://gemnasium.com/scotdalton/institutions.png" alt="Dependency Status" />}[https://gemnasium.com/scotdalton/institutions]
-{<img src="https://codeclimate.com/badge.png" alt="Code Climage" />}[https://codeclimate.com/scotdalton/institutions]
+{<img src="https://codeclimate.com/badge.png" alt="Code Climage" />}[https://codeclimate.com/github/scotdalton/institutions]
 
 This gem provides a mechanism for creating Institutions from a hash of Institutional data elements.
 
-== Basics
+== Institutions Basics
+=== Getting institutions
 Institutions reads in YAML files and creates a Hash of Institution instances 
 with the Institution#code as the Hash key.
+  require 'institutions'
+  institutions = Institutions.institutions
 
-    
+=== Setting load paths
+Specify additional directories to search for institutional YAMLs.
+  require 'institutions'
+  Institutions.loadpaths << File.join("path", "to", "new", "load", "directory")
+
+=== Setting file name
+Specify additional YAML file names that contain institutions.
+  require 'institutions'
+  Institutions.filenames << "my_institution.yml"

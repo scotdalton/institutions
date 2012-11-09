@@ -5,22 +5,22 @@ module Institutions
   require_rel 'institutions'
 
   # Default paths/files for the module.
-  default_loadpaths = [(defined?(Rails) and Rails.root) ? "#{Rails.root}/config" : "./config"]
-  DEFAULT_LOADPATHS = default_loadpaths
-  default_filenames = ["institutions.yml"]
-  DEFAULT_FILENAMES = default_filenames
+  DEFAULT_LOADPATHS = [
+    (defined?(Rails) and Rails.root) ? 
+      "#{Rails.root}/config" : "./config" ]
+  DEFAULT_FILENAMES = ["institutions.yml"]
 
   def self.loadpaths
-    @loadpaths ||= DEFAULT_LOADPATHS
+    @loadpaths ||= DEFAULT_LOADPATHS.dup
   end
 
   def self.filenames
-    @filenames ||= DEFAULT_FILENAMES
+    @filenames ||= DEFAULT_FILENAMES.dup
   end
 
   # Intended for internal use only.
   def self.loadfiles
-    loadfiles ||= []
+    loadfiles = []
     if loadfiles.empty?
       loadpaths.each do |loadpath|
         filenames.each do |filename|

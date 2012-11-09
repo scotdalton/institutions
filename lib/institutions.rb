@@ -19,7 +19,23 @@ module Institutions
     @filenames ||= DEFAULT_FILENAMES
   end
   
-  def self.from_yaml
+  def self.reload
+    @institutions = nil
+    self.institutions
+  end
+
+  # Returns an array of Institutions
+  def defaults
+    return institutions.values.find_all {|institution| institution.default === true}
+  end
+
+  # Returns an array of Institutions
+  def institutions_with_ip(ip)
+    return institutions.values.find_all { |institution| institution.includes_ip?(ip) }
+  end
+  
+  
+  def self.institutions
     unless @institutions
       raise ArgumentError.new("No load path was specified.") if loadpaths.nil?
       loadfiles = []

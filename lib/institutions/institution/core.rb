@@ -54,31 +54,6 @@ module Institutions#:no_doc
     end
 
     # 
-    # Dynamically sets attr_readers for elements
-    # 
-    def method_missing(method, *args, &block)
-      instance_variable = instance_variablize(method)
-      if instance_variable_defined? instance_variable
-        self.class.send :attr_reader, method.to_sym
-        instance_variable_get instance_variable
-      else
-        super
-      end
-    end
-
-    # 
-    # Tells users that we respond to missing methods
-    # if they are instance variables.
-    # 
-    def respond_to_missing?(method, include_private = false)
-      if instance_variable_defined? instance_variablize(method)
-        true
-      else
-        super
-      end
-    end
-
-    # 
     # Sets the required attributes.
     # Raises an ArgumentError specifying the missing arguments if they are nil.
     # 

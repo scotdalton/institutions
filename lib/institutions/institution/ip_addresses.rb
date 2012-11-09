@@ -1,7 +1,20 @@
 module Institutions#:no_doc
   module IpAddresses#:no_doc
-    require 'ipaddr'
+    require 'ipaddr_range_set'
     attr_reader :ip_addresses
+    
+    def ip_addresses=(args)
+      args.collect! do |arg|
+        arg.match(/-/) ? convert_to_range(arg) : arg
+      end
+      @ip_addresses = IPAddrRangeSet.new(*args)
+    end
+    private :ip_addresses
+    
+    def convert_to_range(s)
+      s.split("-")[0]...s.split("-")[1]
+    end
+    private :convert_to_range
 
     #
     # Returns a +boolean+ indicating whether the candidate IP 
@@ -15,16 +28,7 @@ module Institutions#:no_doc
     # 
     def includes_ip?(candidate)
       return false if ip_addresses.nil?
-      candidate_ip = IPAddr.new(candidate)
-      ip_addresses.each do |ip_address|
-        ip_range = (ip_address.match(/[\-\*]/)) ? 
-          (ip_address.match(/\-/)) ? 
-            (IPAddr.new(ip_address.split("-")[0])..IPAddr.new(ip_address.split("-")[1])) :
-              (IPAddr.new(ip_address.gsub(/\*/, "0"))..IPAddr.new(ip_address.gsub(/\*/, "255"))) :
-                IPAddr.new(ip_address).to_range
-        return true if ip_range === candidate_ip unless ip_range.nil?
-      end
-      return false;
+      return ip_addresses.include? candidate
     end
   end
 end

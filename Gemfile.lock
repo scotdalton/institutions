@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/jrochkind/ipaddr_range_set
+  revision: 90ac6fc2b524f23fc9779bdde8825f3b66970dbc
+  specs:
+    ipaddr_range_set (0.9.1)
+
 PATH
   remote: .
   specs:
@@ -15,4 +21,5 @@ PLATFORMS
 
 DEPENDENCIES
   institutions!
+  ipaddr_range_set!
   rake

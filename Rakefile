@@ -1,17 +1,38 @@
+#!/usr/bin/env rake
+begin
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+end
+begin
+  require 'rdoc/task'
+rescue LoadError
+  require 'rdoc/rdoc'
+  require 'rake/rdoctask'
+  RDoc::Task = Rake::RDocTask
+end
+
 require 'rake/testtask'
-require 'rdoc/task'
 require 'git'
 require 'fileutils'
 
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList['test/*_test.rb', 'test/*/*_test.rb']
+RDoc::Task.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'Institutions'
+  rdoc.options << '--line-numbers'
+  rdoc.main = "README.rdoc"
+  rdoc.rdoc_files.include('README.rdoc')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-RDoc::Task.new do |rdoc|
-  rdoc.title = "Institutions"
-  rdoc.main = "README.rdoc"
-  rdoc.rdoc_files.include("README.rdoc", "lib", "*.rb")
+Bundler::GemHelper.install_tasks
+
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.libs << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = false
 end
 
 desc "Push latest RDocs to gh-pages."

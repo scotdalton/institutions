@@ -4,9 +4,9 @@ class InstitutionsTest < Test::Unit::TestCase
   def setup
     # Undo any instance variable settings.
     Institutions.send(:instance_variable_set, :@loadpaths, nil)
-    assert_equal(Institutions::DEFAULT_LOADPATHS, Institutions.loadpaths)
+    assert_equal([Institutions::DEFAULT_LOADPATH], Institutions.loadpaths)
     Institutions.send(:instance_variable_set, :@filenames, nil)
-    assert_equal(Institutions::DEFAULT_FILENAMES, Institutions.filenames)
+    assert_equal([Institutions::DEFAULT_FILENAME], Institutions.filenames)
     Institutions.send(:instance_variable_set, :@institutions, nil)
     assert_nil(Institutions.send(:instance_variable_get, :@institutions))
   end
@@ -16,9 +16,9 @@ class InstitutionsTest < Test::Unit::TestCase
   end
   
   def test_path
-    assert_equal Institutions::DEFAULT_LOADPATHS, Institutions.loadpaths
+    assert_equal [Institutions::DEFAULT_LOADPATH], Institutions.loadpaths
     Institutions.loadpaths << File.join("../config")
-    assert_equal Institutions::DEFAULT_LOADPATHS.concat(["../config"]), Institutions.loadpaths
+    assert_equal [Institutions::DEFAULT_LOADPATH, "../config"], Institutions.loadpaths
   end
   
   def test_institutions

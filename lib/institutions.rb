@@ -5,17 +5,17 @@ module Institutions
   require_rel 'institutions'
 
   # Default paths/files for the module.
-  DEFAULT_LOADPATHS = [
-    (defined?(Rails) and Rails.root) ? 
-      "#{Rails.root}/config" : "./config" ]
-  DEFAULT_FILENAMES = ["institutions.yml"]
+  DEFAULT_LOADPATH = "./config"
+  DEFAULT_FILENAME = "institutions.yml"
 
   def self.loadpaths
-    @loadpaths ||= DEFAULT_LOADPATHS.dup
+    @loadpaths ||=
+      [(defined?(::Rails) and ::Rails.version >= '3.0.1' ) ?
+        "#{Rails.root}/config" : DEFAULT_LOADPATH]
   end
 
   def self.filenames
-    @filenames ||= DEFAULT_FILENAMES.dup
+    @filenames ||= [DEFAULT_FILENAME]
   end
 
   # Intended for internal use only.
@@ -58,7 +58,7 @@ module Institutions
   #   Institutions.loadpaths << File.join("path", "to", "new", "load", "directory")
   # To manipulate file name order and/or add file names
   #   Institutions.filenames << "newfile.yml"
-  # 
+  #
   def self.institutions
     unless @institutions
       raise NameError.new("No load path was specified.") if loadpaths.nil?
@@ -71,7 +71,7 @@ module Institutions
           # Merge the new elements or add a new Institution
           @institutions.has_key?(code) ?
             @institutions[code].merge(elements) :
-              @institutions[code] = 
+              @institutions[code] =
                 Institution.new(code, elements["name"] ? elements["name"] : code, elements)
         end
       end

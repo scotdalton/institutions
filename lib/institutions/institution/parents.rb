@@ -3,6 +3,10 @@ module Institutions#:no_doc
     # Parents attributes
     attr_reader :parent_code
     
+    def parent_code=(parent_code)
+      @parent_code = parent_code.to_sym
+    end
+    
     # 
     # Merges the given parent into the Institution.
     # Assumes the parent has a to_hash method

@@ -8,14 +8,15 @@
 # all options are neccesarily listed as examples here, see source
 # or source-generated docs for more info.   
 default:
-  name: NYU Libraries
+  name: Default
   auth:
     link_code: NYU
   views:
     dir: nyu
     sfx_base_url: http://sfx.library.nyu.edu/sfxlcl41?
 NYU:
-  parent_institution: default
+  name: NYU Libraries
+  parent_code: default
   ip_addresses:
     - 128.122.0.0-128.122.149.239
     - 172.26.*.*
@@ -25,7 +26,7 @@ NYU:
     - 128.238.*.*
 NYUAD:
   name: NYU Abu Dhabi Library
-  parent_institution: NYU 
+  parent_code: NYU 
   views:
     dir: nyuad
     sfx_base_url: http://sfx.library.nyu.edu/sfxlcl41?

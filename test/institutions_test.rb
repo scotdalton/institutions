@@ -33,4 +33,10 @@ class InstitutionsTest < Test::Unit::TestCase
     assert_equal "ns", institutions[:NS].views["dir"]
     assert_equal "ns tag", institutions[:NS].views["tag"]
   end
+  
+  def test_institutions_parents
+    Institutions.loadpaths << File.join("test", "config")
+    institutions = Institutions.institutions
+    assert_equal "NYU Libraries", institutions[:NYU].name
+  end
 end

@@ -29,7 +29,7 @@ module Institutions#:no_doc
       merge h unless h.nil?
       # If the institution is named default, take that as an
       # indication that it's the default institution
-      @default = true if (name.eql? "default" or name.eql? "DEFAULT") 
+      @default = true if name.downcase.eql? "default"
       # If default was never set, explicitly set default as false.
       @default = false if default.nil?
     end

@@ -11,7 +11,12 @@ module Institutions
   def self.loadpaths
     @loadpaths ||=
       [(defined?(::Rails) and ::Rails.version >= '3.0.1' ) ?
-        "#{Rails.root}/config" : DEFAULT_LOADPATH]
+        self.rails_loadpath : DEFAULT_LOADPATH]
+  end
+
+  # Necessary to use a proc to generate the rails root a bit later.
+  def self.rails_loadpath
+    lambda {return "#{Rails.root}/config"}
   end
 
   def self.filenames
@@ -24,7 +29,7 @@ module Institutions
     if loadfiles.empty?
       loadpaths.each do |loadpath|
         filenames.each do |filename|
-          loadfile = File.join(loadpath, filename)
+          loadfile = File.join((loadpath.is_a? Proc) ? loadpath.call : loadpath, filename)
           loadfiles<< loadfile if File.exists?(loadfile)
         end
       end
@@ -72,7 +77,7 @@ module Institutions
           @institutions.has_key?(code) ?
             @institutions[code].merge(elements) :
               @institutions[code] =
-                Institution.new(code, elements["name"] ? elements["name"] : code, elements)
+                Institution.new(code, elements["name"] ? elements["name"] : code.to_s, elements)
         end
       end
       # Handle inheritance for institutions

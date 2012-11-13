@@ -39,4 +39,10 @@ class InstitutionsTest < Test::Unit::TestCase
     institutions = Institutions.institutions
     assert_equal "NYU Libraries", institutions[:NYU].name
   end
+  
+  def test_institutions_default_as_name
+    Institutions.loadpaths << File.join("test", "config")
+    institutions = Institutions.institutions
+    assert institutions[:default].default
+  end
 end

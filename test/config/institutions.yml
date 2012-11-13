@@ -8,7 +8,6 @@
 # all options are neccesarily listed as examples here, see source
 # or source-generated docs for more info.   
 default:
-  name: Default
   auth:
     link_code: NYU
   views:

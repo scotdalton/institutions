@@ -26,18 +26,23 @@ Specify additional YAML file names that contain institutions.
 Institutions have a number of attributes available, separated
 into logical modules
 === Core
-* code -> +String+: unique code for the institution *required*
-* name -> +String+: user friendly name for the institution *required*
-* default -> +Boolean+: is this a default institution
++code+::          [+String+] unique code for the institution *required*
++name+::          [+String+] user friendly name for the institution *required*
++default+::       [+Boolean+] is this a default institution
+
 === Auth
-* auth -> +Hash+: attributes for an authentication/authorization system
++auth+::          [+Hash+] attributes for an authentication/authorization system
+
 === Ip Addresses
-* ip_addresses -> +Array+: ip addresses for the institution
++ip_addresses+::  [+Array+] ip addresses for the institution
+
 === MVC
-* models -> +Hash+: attributes for models in an MVC application
-* views -> +Hash+: attributes for views in an MVC application
-* controllers -> +Hash+: attributes for controllers in an MVC application
++models+::          [+Hash+] attributes for models in an MVC application
++views+::           [+Hash+] attributes for views in an MVC application
++controllers+::     [+Hash+] attributes for controllers in an MVC application
+
 === Parents
-* parent_code -> +String+: code representing the institution's parent
++parent_code+::     [+String+] code representing the institution's parent
+
 === Services
-* services -> +Hash+: services for the given institution
++services+::        [+Hash+] services for the given institution

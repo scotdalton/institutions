@@ -1,5 +1,5 @@
 = Institutions
-{<img src="https://secure.travis-ci.org/scotdalton/institutions.png?branch=master" alt="Build Status" />}[https://travis-ci.org/scotdalton/institutions]
+{<img src="https://api.travis-ci.org/scotdalton/institutions.png?branch=master" alt="Build Status" />}[https://travis-ci.org/scotdalton/institutions]
 {<img src="https://gemnasium.com/scotdalton/institutions.png" alt="Dependency Status" />}[https://gemnasium.com/scotdalton/institutions]
 {<img src="https://codeclimate.com/badge.png" alt="Code Climage" />}[https://codeclimate.com/github/scotdalton/institutions]
 

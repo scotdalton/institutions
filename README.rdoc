@@ -26,8 +26,8 @@ Specify additional YAML file names that contain institutions.
 Institutions have a number of attributes available, separated
 into logical modules
 === Core
-+code+::          +String+ of unique code for the institution *required*
-+name+::          +String+ of user friendly name for the institution *required*
++code+::          +String+ of unique code for the institution (*required*)
++name+::          +String+ of user friendly name for the institution (*required*)
 +default+::       +Boolean+ indicating if this is a default institution
 
 === Auth

@@ -9,11 +9,11 @@
 # or source-generated docs for more info.   
 default:
   auth:
-    link_code: NYU
+    link_code: <%= nyu = "NYU" %>
   views:
     dir: nyu
     sfx_base_url: http://sfx.library.nyu.edu/sfxlcl41?
-NYU:
+<%= nyu %>:
   name: NYU Libraries
   parent_code: default
   ip_addresses:

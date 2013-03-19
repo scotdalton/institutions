@@ -22,7 +22,7 @@ module Institutions#:no_doc
     # 
     def method_missing(method, *args, &block)
       instance_variable = instance_variablize(method)
-      if instance_variable_defined? instance_variable
+      if respond_to_missing?(method) and instance_variable_defined?(instance_variable)
         self.class.send :attr_reader, method.to_sym
         instance_variable_get instance_variable
       else
@@ -46,7 +46,7 @@ module Institutions#:no_doc
     end
     
     def valid_instance_variable?(id)
-      id.to_sym.id2name.match(/[\@\=\?+]/).nil?
+      id.to_sym.id2name.match(/[\@\=\?+\[\]]/).nil?
     end
 
     # Convert s to an instance variable

@@ -1,6 +1,8 @@
 # Order of paths, then order of files dictates overrides.
 
 module Institutions
+  require 'yaml'
+  require 'erb'
   require 'require_all'
   require_rel 'institutions'
 
@@ -71,7 +73,7 @@ module Institutions
       @institutions = {}
       loadfiles.each do |loadfile|
         # Loop through institutions in the yaml
-        YAML.load_file(loadfile).each_pair do |code, elements|
+        YAML.load(ERB.new(File.read(loadfile)).result).each_pair do |code, elements|
           code = code.to_sym
           # Merge the new elements or add a new Institution
           @institutions.has_key?(code) ?

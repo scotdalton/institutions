@@ -1,8 +1,10 @@
-= Institutions
+{<img src="https://badge.fury.io/rb/institutions.png" alt="Gem Version" />}[http://badge.fury.io/rb/institutions]
 {<img src="https://api.travis-ci.org/scotdalton/institutions.png?branch=master" alt="Build Status" />}[https://travis-ci.org/scotdalton/institutions]
 {<img src="https://gemnasium.com/scotdalton/institutions.png" alt="Dependency Status" />}[https://gemnasium.com/scotdalton/institutions]
-{<img src="https://codeclimate.com/badge.png" alt="Code Climage" />}[https://codeclimate.com/github/scotdalton/institutions]
+{<img src="https://codeclimate.com/github/scotdalton/institutions.png" />}[https://codeclimate.com/github/scotdalton/institutions]
+{<img src="https://coveralls.io/repos/scotdalton/institutions/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/scotdalton/institutions]
 
+= Institutions
 This gem provides a mechanism for creating Institutions from a hash of Institutional data elements.
 
 == Institutions Basics

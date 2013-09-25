@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/scotdalton/institutions"
   s.summary     = "Abstract mechanism for setting up Institutions (whatever that means)."
   s.description = "Abstract mechanism for setting up Institutions with arbitrary data elements."
+  s.license     = 'MIT'
 
   s.files         = `git ls-files`.split($\)
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})

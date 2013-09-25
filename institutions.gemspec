@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "require_all", "~> 1.3.1"
   s.add_dependency "ipaddr_range_set", "~> 0.10.0"
-  s.add_dependency "git", "~> 1.2.6"
-  s.add_dependency "rake", "~> 10.1.0"
+
+  s.add_development_dependency "rake", "~> 10.1.0"
 end

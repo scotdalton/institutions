@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
 
   s.add_dependency "require_all", "~> 1.3.1"
-  s.add_dependency "ipaddr_range_set", "~> 0.10.0"
+  s.add_dependency "ipaddr_range_set", "~> 1.0.0"
 
   s.add_development_dependency "rake", "~> 10.1.0"
 end
